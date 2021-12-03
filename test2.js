@@ -9,7 +9,7 @@ module.exports = async function Test2(server, queries) {
     if(jsonLenght <= 0){
         return new NotFound();
     }else{
-        return jsonResp
+        return jsonResp;
     }
 }
 
