@@ -45,7 +45,7 @@ class Server {
             data.forEach((element, index) => {
                 if (element['id'] == id) {
                     const finded = data[index];
-                    data[index] = {...finded, ...newId}
+                    data[index] = {...finded, ...newId};
                     res = data[index];
                 }
             });
