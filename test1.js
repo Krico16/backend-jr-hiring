@@ -1,6 +1,8 @@
+module.exports = function Test1(server) {
 
-module.exports = function Test1(server,name) {
-  server.on('name', data => data);
+  const result = new Promise((res) => {
+    server.on('name', data => res(data));
+  });
 
-  return name;
+  return result;
 }
