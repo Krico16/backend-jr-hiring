@@ -7,15 +7,8 @@ class Server {
     // Create your server with query features with sift
     // We pass the db when the Server is instantiated (constructor)
     constructor(db) {
-        this.events = {};
         this.db = db;
-        this.crashed = false;
     }
-
-    on(event, callback) {
-        this.events[event] = callback;
-    }
-
     async find(model, query) {
         const result = this.db[model].filter(sift(query));
         await this.hardWork(100);
