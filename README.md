@@ -81,8 +81,8 @@ This test is failing because the `Test1` is not returning the argument value of 
 
 In short, you will need to deal with:
 
-- [ ] `server.on(...)` method does not return value so you can't `const name = server.on(...)`
-- [ ] `server.on('name', callback)` could be invoked after a `N` seconds.
+- [x] `server.on(...)` method does not return value so you can't `const name = server.on(...)`
+- [x] `server.on('name', callback)` could be invoked after a `N` seconds.
 
 ---
 
@@ -92,8 +92,8 @@ Here is a context of classic querying to database in MongoDB, where can return d
 
 Your job is:
 
-- [ ] When the result of querying to database is empty array throw an `NotFound` error.
-- [ ] When the result of querying to database is an unexpected error throw an `ServerError` error.
+- [x] When the result of querying to database is empty array throw an `NotFound` error.
+- [x] When the result of querying to database is an unexpected error throw an `ServerError` error.
 
 Be sure the errors were not crash the app, does mean **if you don't catch the error correctly the server will be stopped**. We catch correctly in the test, but **in the real world, that's equal to server down!**
 
@@ -107,9 +107,9 @@ You will learn about how works in the most simple way querying of MongoDB, handl
 
 1. Create a constructor to store the db
 2. Create methods
-    - [ ] `find`
-    - [ ] `findOne`
-    - [ ] `updateOne`
+    - [x] `find`
+    - [x] `findOne`
+    - [x] `updateOne`
     
 Here you will need to use `sift` to receive the query to filter on db. [Check more info of sift](https://github.com/crcn/sift.js).
 
