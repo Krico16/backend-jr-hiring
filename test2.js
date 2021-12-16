@@ -5,7 +5,7 @@ module.exports = async function Test2(server, queries) {
     try {
         const jsonResp = JSON.parse(response);
         const jsonLenght = Object.keys(jsonResp).length;
-        return (jsonLenght <= 0) ? jsonResp : new NotFound();
+        return (jsonLenght <= 0) ? new NotFound() : jsonResp;
     } catch (error) {
         return new ServerError();
     }
