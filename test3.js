@@ -11,29 +11,22 @@ class Server {
     }
     async find(model, query) {
         const result = this.db[model].filter(sift(query));
-        if (Object.keys(result).length > 0) return Array.from(result); else return new NotFound();
+        
+        return (Object.keys(result).length > 0) ? Array.from(result) : new NotFound();
     }
 
     async findOne(model, id) {
-        return (id == null) ? new NotFound(`No data found with the id equal as "${id}".`) : this.db[model].filter(obj => obj.id == id)[0];
+        return (!id) ? new NotFound(`No data found with the id equal as "${id}".`) : this.db[model].filter(obj => obj.id == id)[0];
     }
 
     async updateOne(model, id, newId) {
+        if (!id) return new NotFound(`No data for update found with the id equal as "${id}".`);
 
-        if (id == null) {
-            return new NotFound(`No data for update found with the id equal as "${id}".`);
-        } else {
-            var res = null;
-            const data = this.db[model];
-            data.forEach((element, index) => {
-                if (element['id'] == id) {
-                    const finded = data[index];
-                    data[index] = { ...finded, ...newId };
-                    res = data[index];
-                }
-            });
-            return res;
-        }
+        const data = this.db[model];
+
+        const queryIndex = data.findIndex(query => query.id == id);
+        data[queryIndex] = Object.assign(data[queryIndex], newId);
+        return data[queryIndex];
     }
 }
 
